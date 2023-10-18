@@ -1,7 +1,7 @@
 package co.com.crudtest.api;
 
-import co.com.crudtest.model.product.Product;
-import co.com.crudtest.usecase.crudproducto.CrudProductUseCase;
+import co.com.crudtest.model.animal.Animal;
+import co.com.crudtest.usecase.crudanimal.CrudAnimalUseCase;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,34 +14,38 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 public class ApiRest {
-  private final CrudProductUseCase crudProductUseCase;
+  private final CrudAnimalUseCase crudAnimalUseCase;
 
-  @GetMapping(path = "/product/{id}")
-  public Product read(@PathVariable String id) {
-    return crudProductUseCase.read(id);
+  @GetMapping(path = "/animal/{id}")
+  public Animal read(@PathVariable String id) {
+    return crudAnimalUseCase.read(id);
   }
 
-  @PostMapping(path = "/product")
-  public void create(@RequestBody Product product) {
-    crudProductUseCase.create(product);
+  @PostMapping(path = "/animal")
+  public Animal create(@RequestBody Animal animal) {
+    return crudAnimalUseCase.create(animal);
   }
 
-  @PutMapping(path = "/product/{id}")
-  public void update(@PathVariable String id, @RequestBody Product product) {
+  @PutMapping(path = "/animal/{id}")
+  public Animal update(@PathVariable String id, @RequestBody Animal animal) {
     try {
-      crudProductUseCase.update(id, product);
+      return crudAnimalUseCase.update(id, animal);
     } catch (Exception e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
   }
 
-  @DeleteMapping(path = "/product/{id}")
+  @DeleteMapping(path = "/animal/{id}")
   public void delete(@PathVariable String id) {
-    crudProductUseCase.delete(id);
+    try {
+      crudAnimalUseCase.delete(id);
+    } catch (Exception e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
   }
 
-  @GetMapping(path = "/product")
-  public List<Product> getAll() {
-    return crudProductUseCase.getAll();
+  @GetMapping(path = "/animales")
+  public List<Animal> getAll() {
+    return crudAnimalUseCase.getAll();
   }
 }

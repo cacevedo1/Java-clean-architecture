@@ -1,4 +1,4 @@
-package co.com.crudtest.model.product;
+package co.com.crudtest.model.animal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Animal {
 
-  private String id;
-  private String name;
-  private int price;
+  //private String id;
 
   private String animal;
 

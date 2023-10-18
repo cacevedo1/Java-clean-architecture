@@ -1,9 +1,8 @@
 package co.com.crudtest.jpa;
 
-import co.com.crudtest.model.product.Product;
-import co.com.crudtest.model.product.gateways.ProductRepository;
+import co.com.crudtest.model.animal.Animal;
+import co.com.crudtest.model.animal.gateways.AnimalRepository;
 
-import java.time.Clock;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -11,45 +10,49 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class JpaProductImpl implements ProductRepository {
+public class JpaAnimalImpl implements AnimalRepository {
 
   private JPARepositoryAdapter jpaRepositoryAdapter;
 
   @Override
-  public void create(Product product) {
-    String id = UUID.randomUUID().toString();
-    System.out.println(product);
-    product.setId(id);
-    System.out.println(product);
-    jpaRepositoryAdapter.save(product);
+  public Animal create(Animal animal) {
+    //String id = UUID.randomUUID().toString();
+    //animal.setId(id);
+    jpaRepositoryAdapter.save(animal);
+    return animal;
   }
 
   @Override
-  public Product read(String id) {
+  public Animal read(String id) {
     return jpaRepositoryAdapter.findById(id);
   }
 
   @Override
-  public Product update(String id, Product product) throws Exception {
-    Product productDb = jpaRepositoryAdapter.findById(id);
+  public Animal update(String id, Animal animal) throws Exception {
+    Animal animalDb = jpaRepositoryAdapter.findById(id);
 
-    if (productDb == null) throw new Exception("Product Not Found : " + id);
+    if (animalDb == null) throw new Exception("Product Not Found : " + id);
 
-    productDb.setName(product.getName());
-    productDb.setPrice(product.getPrice());
+    //animalDb.setAnimal(animal.getAnimal());
+    animalDb.setPatas(animal.getPatas());
+    animalDb.setHabitad(animal.getHabitad());
+    animalDb.setGenero(animal.getGenero());
+    animalDb.setEspecie(animal.getEspecie());
+    animalDb.setDomestico(animal.isDomestico());
 
-    jpaRepositoryAdapter.save(productDb);
-    return productDb;
+    jpaRepositoryAdapter.save(animalDb);
+    return animal;
   }
 
   @Override
-  public void delete(String id) {
+  public void delete(String id) throws Exception  {
+    Animal animalDb = jpaRepositoryAdapter.findById(id);
+    if (animalDb == null) throw new Exception("Product Not Found : " + id);
     jpaRepositoryAdapter.deleteById(id);
   }
 
   @Override
-  public List<Product> getAll() {
-    System.out.println(jpaRepositoryAdapter.findAll());
+  public List<Animal> getAll() {
     return jpaRepositoryAdapter.findAll();
   }
 }

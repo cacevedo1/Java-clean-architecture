@@ -1,19 +1,19 @@
-package co.com.crudtest.model.product.gateways;
+package co.com.crudtest.model.animal.gateways;
 
-import co.com.crudtest.model.product.Product;
+import co.com.crudtest.model.animal.Animal;
 import java.util.List;
 
-public interface ProductRepository {
+public interface AnimalRepository {
 
-  void create(Product product);
+  Animal create(Animal animal);
 
-  Product read(String id);
+  Animal read(String id);
 
-  default Product update(String id, Product product) throws Exception {
-    return product;
+  default Animal update(String id, Animal animal) throws Exception {
+    return animal;
   }
 
-  void delete(String id);
+   void delete(String id) throws Exception;
 
-  List<Product> getAll();
+  List<Animal> getAll();
 }

@@ -11,17 +11,13 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "product")
-public class ProductEntity {
+@Table(name = "animal")
+public class AnimalEntity {
+
+  //@Id
+  //private String id;
 
   @Id
-  private String id;
-  @Column
-  private String name;
-  @Column
-  private int price;
-
-  @Column
   private String animal;
 
   @Column

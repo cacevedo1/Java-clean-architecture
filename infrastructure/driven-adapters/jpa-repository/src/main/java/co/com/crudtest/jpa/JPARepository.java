@@ -1,9 +1,9 @@
 package co.com.crudtest.jpa;
 
-import co.com.crudtest.jpa.entities.ProductEntity;
+import co.com.crudtest.jpa.entities.AnimalEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 public interface JPARepository
-    extends CrudRepository<ProductEntity /* change for adapter model */, String>,
-        QueryByExampleExecutor<ProductEntity /* change for adapter model */> {}
+    extends CrudRepository<AnimalEntity /* change for adapter model */, String>,
+        QueryByExampleExecutor<AnimalEntity /* change for adapter model */> {}
