@@ -2,6 +2,8 @@ package co.com.crudtest.jpa;
 
 import co.com.crudtest.model.product.Product;
 import co.com.crudtest.model.product.gateways.ProductRepository;
+
+import java.time.Clock;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,9 @@ public class JpaProductImpl implements ProductRepository {
   @Override
   public void create(Product product) {
     String id = UUID.randomUUID().toString();
+    System.out.println(product);
     product.setId(id);
+    System.out.println(product);
     jpaRepositoryAdapter.save(product);
   }
 
@@ -45,6 +49,7 @@ public class JpaProductImpl implements ProductRepository {
 
   @Override
   public List<Product> getAll() {
+    System.out.println(jpaRepositoryAdapter.findAll());
     return jpaRepositoryAdapter.findAll();
   }
 }

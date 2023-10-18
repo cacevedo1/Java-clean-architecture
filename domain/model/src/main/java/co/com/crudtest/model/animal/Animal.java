@@ -13,5 +13,21 @@ public class Product {
 
   private String id;
   private String name;
-  private long price;
+  private int price;
+
+  private String animal;
+
+  private int patas;
+
+  private String genero;
+
+  private String especie;
+
+  private String habitad;
+
+  private boolean domestico;
+
+
+
+
 }

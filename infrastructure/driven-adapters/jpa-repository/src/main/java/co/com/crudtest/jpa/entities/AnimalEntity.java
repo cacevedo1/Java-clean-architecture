@@ -19,5 +19,26 @@ public class ProductEntity {
   @Column
   private String name;
   @Column
-  private long price;
+  private int price;
+
+  @Column
+  private String animal;
+
+  @Column
+  private int patas;
+
+
+  @Column
+  private String genero;
+
+  @Column
+  private String especie;
+
+  @Column
+  private String habitad;
+
+  @Column
+  private boolean domestico;
+
+
 }
